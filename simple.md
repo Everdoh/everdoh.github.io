@@ -15,3 +15,5 @@ I will leave all the crucial references and obligations of the good hermit here.
 `Architecture and Organization`
 
 * Computer Systems A Programmer's Perspective Third Edition - Randal Bryant, David O'Hallaron
+
+![](/assets/imagens/Comp-Systems.jpg)
