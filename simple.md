@@ -1,7 +1,7 @@
 ---
 title: 
-layout: Hermit library
-permalink: /Hermitlibrary/
+layout: simple
+permalink: /simple/
 order: 1
 ---
 
