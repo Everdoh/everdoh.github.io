@@ -1,8 +1,13 @@
 ---
+title: 
 layout: page
 title: About
 permalink: /about/
 ---
+
+### /{{ page.title }}/
+
+[../](../)
 
 Hello, this blog is aimed at all those who like to suffer with topics that no one would like to know about or topics that make those who study them true hermits.
 
