@@ -16,4 +16,4 @@ I will leave all the crucial references and obligations of the good hermit here.
 
 * Computer Systems A Programmer's Perspective Third Edition - Randal Bryant, David O'Hallaron
 
-![](/assets/images/Comp-Systems.jpg)
+![](/everdoh.github.io/assets/images/1.jpg)
