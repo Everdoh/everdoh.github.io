@@ -1,7 +1,8 @@
 ---
 title: 
 layout: simple
-permalink: /simple/
+title: Library
+permalink: /library/
 order: 1
 ---
 
