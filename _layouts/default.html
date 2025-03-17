@@ -3,17 +3,6 @@
 
   {% include head.html %}
 
-<p>Visualizações: <span id="contador"></span></p>
-
-<script>
-  fetch('https://api.countapi.xyz/hit/everdoh.github.io/visitas')
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('contador').innerText = data.value;
-    })
-    .catch(error => console.error("Erro ao obter o contador", error));
-</script>
-
 
 
   <body>
