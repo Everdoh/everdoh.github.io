@@ -1,8 +1,8 @@
 ---
 title: 
 layout: simple
-title: Library
-permalink: /library/
+title: Manuscripts
+permalink: /manuscripts/
 order: 1
 ---
 
