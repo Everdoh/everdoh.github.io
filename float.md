@@ -1,6 +1,6 @@
 ---
 title: Float Calculator
-layout: posts
+layout: float
 permalink: /calc
 order: 3
 ---

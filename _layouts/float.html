@@ -1,0 +1,103 @@
+---
+layout: default
+title: Float calculator
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Float & Double Viewer</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #f7f7f7;
+      color: #333;
+      padding: 20px;
+    }
+    input {
+      padding: 5px;
+      font-size: 1em;
+      width: 200px;
+    }
+    .section {
+      margin-top: 20px;
+    }
+    .bit {
+      display: inline-block;
+      padding: 2px 4px;
+      margin: 1px;
+      font-weight: bold;
+    }
+    .sign { background: #f88; color: white; }
+    .exp  { background: #8af; color: white; }
+    .mant { background: #8f8; color: black; }
+    .label { font-size: 0.9em; color: #666; margin-top: 5px; display: block; }
+    .hex  { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Float & Double Bit Viewer</h1>
+  <p>Insira um número decimal:</p>
+  <input type="number" id="inputVal" step="any" placeholder="Ex: 3.1415" oninput="update()" />
+
+  <div class="section">
+    <h2>Float (32-bit)</h2>
+    <div id="floatBin"></div>
+    <div class="hex" id="floatHex"></div>
+  </div>
+
+  <div class="section">
+    <h2>Double (64-bit)</h2>
+    <div id="doubleBin"></div>
+    <div class="hex" id="doubleHex"></div>
+  </div>
+
+  <script>
+    function toBits(n, bits) {
+      return n.toString(2).padStart(bits, '0');
+    }
+
+    function renderBits(bits, layout) {
+      let html = '';
+      layout.forEach(([label, length, cls]) => {
+        const part = bits.slice(0, length);
+        bits = bits.slice(length);
+        for (let c of part) {
+          html += `<span class="bit ${cls}">${c}</span>`;
+        }
+        html += `<span class="label">${label}</span><br/>`;
+      });
+      return html;
+    }
+
+    function update() {
+      const val = parseFloat(document.getElementById('inputVal').value);
+      if (isNaN(val)) return;
+
+      // FLOAT 32
+      const f32 = new Float32Array([val]);
+      const u32 = new Uint32Array(f32.buffer);
+      const floatBits = toBits(u32[0], 32);
+      const floatLayout = [["Sign", 1, "sign"], ["Exponent", 8, "exp"], ["Mantissa", 23, "mant"]];
+
+      document.getElementById('floatBin').innerHTML = renderBits(floatBits, floatLayout);
+      document.getElementById('floatHex').innerText = `Hex: 0x${u32[0].toString(16).padStart(8, '0')}`;
+
+      // DOUBLE 64
+      const f64 = new Float64Array([val]);
+      const u64 = new Uint32Array(f64.buffer);
+      // Combine the two 32-bit parts
+      const high = u64[1].toString(2).padStart(32, '0');
+      const low = u64[0].toString(2).padStart(32, '0');
+      const doubleBits = high + low;
+      const doubleLayout = [["Sign", 1, "sign"], ["Exponent", 11, "exp"], ["Mantissa", 52, "mant"]];
+
+      document.getElementById('doubleBin').innerHTML = renderBits(doubleBits, doubleLayout);
+      document.getElementById('doubleHex').innerText =
+        `Hex: 0x${u64[1].toString(16).padStart(8, '0')}${u64[0].toString(16).padStart(8, '0')}`;
+    }
+  </script>
+</body>
+</html>
