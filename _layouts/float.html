@@ -8,7 +8,7 @@ title: Float calculator
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Float & Double Viewer</title>
+  <title>Float Calculator</title>
   <style>
     body {
       font-family: monospace;
@@ -38,8 +38,8 @@ title: Float calculator
   </style>
 </head>
 <body>
-  <h1>Float & Double Bit Viewer</h1>
-  <p>Insira um número decimal:</p>
+  <h1>Float Calculator</h1>
+  <p>Enter a decimal number:</p>
   <input type="number" id="inputVal" step="any" placeholder="Ex: 3.1415" oninput="update()" />
 
   <div class="section">
@@ -88,7 +88,7 @@ title: Float calculator
       // DOUBLE 64
       const f64 = new Float64Array([val]);
       const u64 = new Uint32Array(f64.buffer);
-      // Combine the two 32-bit parts
+      // Aqui junta as duas partes.
       const high = u64[1].toString(2).padStart(32, '0');
       const low = u64[0].toString(2).padStart(32, '0');
       const doubleBits = high + low;
