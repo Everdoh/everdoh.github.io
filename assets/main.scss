@@ -1,35 +1,32 @@
 ---
-# O front matter (os traços) deve continuar no topo para o Jekyll processar o arquivo
+# Only the main Sass file needs front matter
 ---
 
 @import "skeleton";
 @import "morph";
 
-/* 1. Definição da Fonte */
+/* 1. O que já tinhas: Definição da fonte */
 @font-face {
   font-family: 'Departure Mono';
-  src: url('{{ "/assets/fonts/DepartureMono-Regular.otf" | relative_url }}') format('opentype');
+  src: url('{{ "/assets/fonts/DepartureMono-Regular.otf" | relative_url }}');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
 }
 
-/* 2. Aplicação Global */
-html, body {
+/* 2. O que já tinhas: Aplicação geral */
+html, body, p, li, h1, h2, h3 {
   font-family: 'Departure Mono', monospace !important;
-  font-size: 16px;      /* Ajuste de tamanho para legibilidade */
-  line-height: 1.6;    /* Espaçamento entre linhas */
 }
 
-/* 3. Ajustes para Títulos e Código */
-h1, h2, h3, p, li {
-  font-family: 'Departure Mono', monospace !important;
+/* 3. O NOVO CÓDIGO: Ajustes de espaçamento e legibilidade */
+body {
+  font-size: 16px;      /* Aumenta um pouco o texto para cansar menos a vista */
+  line-height: 1.6;    /* Dá espaço entre as linhas de texto */
 }
 
 code, pre {
   font-family: 'Departure Mono', monospace !important;
-  font-size: 14px;
-  background-color: #f4f4f4; /* Cria um leve fundo cinza para o código */
-  padding: 2px 4px;
-  border-radius: 3px;
+  padding: 8px 12px !important; /* Cria o "respiro" dentro das caixas brancas */
+  display: inline-block;        /* Garante que o padding seja aplicado corretamente */
+  border-radius: 4px;           /* Arredonda levemente os cantos das caixas */
 }
